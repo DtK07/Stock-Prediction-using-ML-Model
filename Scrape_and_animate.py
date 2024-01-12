@@ -46,44 +46,71 @@ price2 = df['GOOGL']
 price3 = df['MSFT']
 price4 = df['META']
 
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, sharex= True)
-fig.suptitle('Big 4 - Stock price fluctuations', fontsize=12, y=1)
-fig.text(0.06, 0.5, 'Price', ha='center', va='center', rotation='vertical')
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+fig.suptitle('Big 4 - Stock price fluctuations in a chosen time window on a selective date', fontsize=12, y=0.95)
+fig.text(0.06, 0.5, 'Price in USD', ha='center', va='center', rotation='vertical')
+fig.text(0.5, 0.04, 'Time in HH:MM', ha='center', va='center')
+# custom_labels = ['12:13', '12:14', '12:15', '12:16', '12:17', '12:18', '12:19', '12:20', '12:21', '12:22']
+custom_labels = ['12:13', '12:14', '12:15', '12:16', '12:17', '12:18', '12:19', '12:20', '12:21', '12:22']
+
 x_values = []
 y_values = []
+# Set x-ticks for the entire plot
+ax1.set_xticks(range(len(price1)))
+ax1.set_xticklabels(custom_labels)
+
 for p in range(len(price1)):
     x_values.append(p)
     y_values.append(price1[p])
+
     ax1.set_title('Apple')
-    ax1.plot(x_values,y_values, color='blue', linestyle='--', marker='o')
-    plt.pause(2)
+    ax1.plot(x_values, y_values, color='blue', linestyle='-.', marker='d')
+    plt.pause(1)
 
 x_values = []
 y_values = []
+# Set x-ticks for the entire plot
+ax2.set_xticks(range(len(price2)))
+ax2.set_xticklabels(custom_labels)
+
 for p in range(len(price2)):
     x_values.append(p)
     y_values.append(price2[p])
+
     ax2.set_title('Google')
-    ax2.plot(x_values, y_values, color='green', linestyle='-', marker='s')
-    plt.pause(2)
+    ax2.plot(x_values, y_values, color='purple', linestyle='-.', marker='d')
+    plt.pause(1)
 
 x_values = []
 y_values = []
+# Set x-ticks for the entire plot
+ax3.set_xticks(range(len(price3)))
+ax3.set_xticklabels(custom_labels)
+
 for p in range(len(price3)):
     x_values.append(p)
     y_values.append(price3[p])
+
     ax3.set_title('Microsoft')
-    ax3.plot(x_values, y_values, color='red', linestyle=':', marker='^')
-    plt.pause(2)
+    ax3.plot(x_values, y_values, color='green', linestyle='-.', marker='d')
+    plt.pause(1)
 
 x_values = []
 y_values = []
+# Set x-ticks for the entire plot
+ax4.set_xticks(range(len(price4)))
+ax4.set_xticklabels(custom_labels)
+
 for p in range(len(price4)):
     x_values.append(p)
     y_values.append(price4[p])
+
     ax4.set_title('Meta')
-    ax4.plot(x_values, y_values, color='purple', linestyle='-.', marker='d')
-    plt.pause(2)
+    ax4.plot(x_values, y_values, color='red', linestyle='-.', marker='d')
+    plt.pause(1)
+
+
+# Show the final plot
 plt.show()
 
 
